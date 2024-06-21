@@ -31,6 +31,7 @@ class Photo < ApplicationRecord
   ## Indirect associations
 
   # Photo#fans: returns rows from the users table associated to this photo through its likes
+  has_many(:fans, through: :likes, source: :fan)
 
 
 =begin
@@ -60,7 +61,7 @@ class Photo < ApplicationRecord
 
     return matching_likes
   end
-=end
+
 
   def fans
     my_likes = self.likes
@@ -75,7 +76,7 @@ class Photo < ApplicationRecord
 
     return matching_users
   end
-
+=end
 
   def fan_list
     my_fans = self.fans
